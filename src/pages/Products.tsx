@@ -20,7 +20,7 @@ export default function Products() {
   //     .then((data) => setData(data));
   // }, []);
 
-  const { data, isloading, error } = useGetProductsQuery(undefined);
+  const { data, isLoading, error } = useGetProductsQuery(undefined);
 
   const { toast } = useToast();
 
