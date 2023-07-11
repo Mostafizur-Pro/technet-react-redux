@@ -19,17 +19,21 @@ interface IProps {
 export default function ProductReview({ id }: IProps) {
   const [inputValue, setInputValue] = useState<string>('');
 
-  const [postComment, /* option */ { isLoading, isError, isSuccess }] =
+  // const [postComment, /* option */ { isLoading, isError, isSuccess }] =
+  //   usePostCommentMutation();
+  const [postComment, { isLoading, isError, isSuccess }] =
     usePostCommentMutation();
   console.log(isLoading, isError, isSuccess);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    // console.log(inputValue);
+    console.log('inputValue', inputValue);
     event.preventDefault();
+
     const options = {
       id: id,
       data: { comment: inputValue },
     };
+    console.log('id', options.id);
     postComment(options);
     setInputValue('');
   };
