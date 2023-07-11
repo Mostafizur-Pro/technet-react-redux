@@ -8,13 +8,6 @@ import {
   usePostCommentMutation,
 } from '@/redux/api/apiSlice';
 
-// const dummyComments = [
-//   'Bhalo na',
-//   'Ki shob ghori egula??',
-//   'Eta kono product holo ??',
-//   '200 taka dibo, hobe ??',
-// ];
-
 interface IProps {
   id: string;
 }
@@ -22,11 +15,11 @@ interface IProps {
 export default function ProductReview({ id }: IProps) {
   const [inputValue, setInputValue] = useState<string>('');
 
-  const { data } = useGetCommentQuery(id);
-  // console.log('new', id);
+  const { data } = useGetCommentQuery(id, {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 1000,
+  });
 
-  // const [postComment, /* option */ { isLoading, isError, isSuccess }] =
-  //   usePostCommentMutation();
   const [postComment, { isLoading, isError, isSuccess }] =
     usePostCommentMutation();
   console.log(isLoading, isError, isSuccess);
