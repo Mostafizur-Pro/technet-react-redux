@@ -25,12 +25,6 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
-  // const dispatch = useAppDispatch();
-
-  // const onSubmit = (data: SignupFormInputs) => {
-  //   console.log(data);
-  //   dispatch(createUser({ email: data.email, password: data.password }));
-  // };
   const dispatch = useAppDispatch();
 
   const onSubmit = (data: LoginFormInputs) => {
