@@ -12,12 +12,25 @@ import {
 import { HiOutlineSearch } from 'react-icons/hi';
 import Cart from '../components/Cart';
 import logo from '../assets/images/technet-logo.png';
-import { useAppSelector } from '@/redux/hook';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import { setUser } from '@/redux/feature/user/userSlice';
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
+
+  const dispatch = useAppDispatch();
   const handleLogout = () => {
-    console.log();
+    // console.log();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        dispatch(setUser(null));
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   };
   return (
     <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">
