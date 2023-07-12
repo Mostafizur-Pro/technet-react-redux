@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 
 interface IUserState {
   user: {
